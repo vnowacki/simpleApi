@@ -24,7 +24,7 @@ class ArticlesController extends AbstractController
         );
     }
 
-    #[Route('/articles', name: 'api_articles_list', methods: ['GET'])]
+    #[Route('/articles', name: 'api_articles_get_all', methods: ['GET'])]
     public function getAll(Connection $connection): Response
     {
         $articles_dbo = $connection->fetchAllAssociative("SELECT * FROM articles");

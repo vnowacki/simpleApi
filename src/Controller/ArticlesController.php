@@ -7,21 +7,12 @@ use Doctrine\DBAL\Connection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ArticlesController extends AbstractController
 {
-    private $serializer;
-
-    public function __construct() {
-        $this->serializer = new Serializer(
-            [new GetSetMethodNormalizer(), new ArrayDenormalizer(), new ObjectNormalizer()],
-            [new JsonEncoder()]
-        );
+    public function __construct(public SerializerInterface $serializer) {
+        $this->serializer = $serializer;
     }
 
     #[Route('/articles', name: 'api_articles_get_all', methods: ['GET'])]
@@ -38,8 +29,8 @@ class ArticlesController extends AbstractController
     #[Route('/articles/{id}', name: 'api_articles_get_by_id', methods: ['GET'])]
     public function getOne(Connection $connection, int $id): Response
     {
-        $article_dbo = $connection->fetchOne("SELECT * FROM articles WHERE id = ?", [$id]);
-        $article = $this->serializer->deserialize(json_encode($article_dbo), Article::class, 'json');
+        $article_dbo = $connection->fetchAllAssociative("SELECT * FROM articles WHERE id = ?", [$id]);
+        $article = $this->serializer->deserialize(json_encode($article_dbo[0]), Article::class, 'json');
 
         $serializedData = $this->serializer->serialize($article, 'json');
 

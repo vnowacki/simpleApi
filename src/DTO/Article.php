@@ -2,35 +2,39 @@
 
 namespace App\DTO;
 
+use DateTime;
+
 final class Article
 {
-    private $id = null;
-    private $id_origin = null;
-    private $title = '';
-    private $menu_title = '';
-    private $content = '';
-    private $short = '';
-    private $url = '';
-    private $id_author = null;
-    private $id_editor = null;
-    private $stamp = null;
-    private $start_stamp = null;
-    private $ending_stamp = null;
-    private $seo_keywords = '';
-    private $seo_description = '';
-    private $seo_index = false;
-    private $archive = false;
-    private $draft = false;
-    private $important = false;
-    private $pinned = false;
-    private $visited = 0;
-    private $preview = false;
-    private $id_responsible = null;
-    private $notListInNewest = false;
-    private $id_photo = null;
-    private $photo_path = '';
-    private $type = '';
-    private $calendar_stamp = null;
+    private ?int $id = null;
+    private ?int $id_origin = null;
+    private ?string $title = '';
+    private ?string $menu_title = '';
+    private ?string $content = '';
+    private ?string $short = '';
+    private ?string $url = '';
+    private ?int $id_author = null;
+    private ?int $id_editor = null;
+    private ?DateTime $stamp = null;
+    private ?DateTime $start_stamp = null;
+    private ?DateTime $ending_stamp = null;
+    private ?string $seo_keywords = '';
+    private ?string $seo_description = '';
+    private ?int $seo_index = null;
+    private ?int $archive = null;
+    private ?int $draft = null;
+    private ?int $important = null;
+    private ?int $pinned = null;
+    private ?int $visited = 0;
+    private ?int $preview = null;
+    private ?int $id_responsible = null;
+    private ?int $notListInNewest = null;
+    private ?int $id_photo = null;
+    private ?string $photo_path = '';
+    private ?string $type = '';
+    private ?DateTime $calendar_stamp = null;
+
+    
 
     public function getTitle(): ?string
     {
@@ -40,25 +44,29 @@ final class Article
     {
         $this->title = $title;
     }
-    public function getMenu_title()
+    public function getMenuTitle()
     {
         return $this->menu_title;
     }
-    public function setMenu_title($menu_title)
+    public function setMenuTitle($menu_title)
     {
         $this->menu_title = $menu_title;
     }
-    public function getId_origin()
+    public function getIdOrigin()
     {
         return $this->id_origin;
     }
-    public function setId_origin($id_origin)
+    public function setIdOrigin($id_origin)
     {
         $this->id_origin = $id_origin;
     }
     public function getId()
     {
         return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
     }
     public function getContent()
     {
@@ -84,19 +92,19 @@ final class Article
     {
         $this->url = $url;
     }
-    public function getId_author()
+    public function getIdAuthor()
     {
         return $this->id_author;
     }
-    public function setId_author($id_author)
+    public function setIdAuthor($id_author)
     {
         $this->id_author = $id_author;
     }
-    public function getId_editor()
+    public function getIdEditor()
     {
         return $this->id_editor;
     }
-    public function setId_editor($id_editor)
+    public function setIdEditor($id_editor)
     {
         $this->id_editor = $id_editor;
     }
@@ -108,43 +116,43 @@ final class Article
     {
         $this->stamp = $stamp;
     }
-    public function getStart_stamp()
+    public function getStartStamp()
     {
         return $this->start_stamp;
     }
-    public function setStart_stamp($start_stamp)
+    public function setStartStamp($start_stamp)
     {
         $this->start_stamp = $start_stamp;
     }
-    public function getEnding_stamp()
+    public function getEndingStamp()
     {
         return $this->ending_stamp;
     }
-    public function setEnding_stamp($ending_stamp)
+    public function setEndingStamp($ending_stamp)
     {
         $this->ending_stamp = $ending_stamp;
     }
-    public function getSeo_keywords()
+    public function getSeoKeywords()
     {
         return $this->seo_keywords;
     }
-    public function setSeo_keywords($seo_keywords)
+    public function setSeoKeywords($seo_keywords)
     {
         $this->seo_keywords = $seo_keywords;
     }
-    public function getSeo_description()
+    public function getSeoDescription()
     {
         return $this->seo_description;
     }
-    public function setSeo_description($seo_description)
+    public function setSeoDescription($seo_description)
     {
         $this->seo_description = $seo_description;
     }
-    public function getSeo_index()
+    public function getSeoIndex()
     {
         return $this->seo_index;
     }
-    public function setSeo_index($seo_index)
+    public function setSeoIndex($seo_index)
     {
         $this->seo_index = $seo_index;
     }
@@ -196,11 +204,11 @@ final class Article
     {
         $this->preview = $preview;
     }
-    public function getId_responsible()
+    public function getIdResponsible()
     {
         return $this->id_responsible;
     }
-    public function setId_responsible($id_responsible)
+    public function setIdResponsible($id_responsible)
     {
         $this->id_responsible = $id_responsible;
     }
@@ -212,19 +220,19 @@ final class Article
     {
         $this->notListInNewest = $notListInNewest;
     }
-    public function getId_photo()
+    public function getIdPhoto()
     {
         return $this->id_photo;
     }
-    public function setId_photo($id_photo)
+    public function setIdPhoto($id_photo)
     {
         $this->id_photo = $id_photo;
     }
-    public function getPhoto_path()
+    public function getPhotoPath()
     {
         return $this->photo_path;
     }
-    public function setPhoto_path($photo_path)
+    public function setPhotoPath($photo_path)
     {
         $this->photo_path = $photo_path;
     }
@@ -236,11 +244,11 @@ final class Article
     {
         $this->type = $type;
     }
-    public function getCalendar_stamp()
+    public function getCalendarStamp()
     {
         return $this->calendar_stamp;
     }
-    public function setCalendar_stamp($calendar_stamp)
+    public function setCalendarStamp($calendar_stamp)
     {
         $this->calendar_stamp = $calendar_stamp;
     }
